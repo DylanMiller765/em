@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 const CountdownTimer = ({ targetDate }) => {
-  const calculateTimeLeft = () => {
+  const calculateTimeLeft = useCallback(() => {
     let difference = +new Date(targetDate) - +new Date();
     let timeLeft = {};
 
@@ -15,7 +15,7 @@ const CountdownTimer = ({ targetDate }) => {
     }
 
     return timeLeft;
-  };
+  }, [targetDate]);
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
@@ -24,8 +24,8 @@ const CountdownTimer = ({ targetDate }) => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
 
-    return () => clearInterval(intervalId); // Clear interval on unmount
-  }, [targetDate]); // Only targetDate as dependency
+    return () => clearInterval(intervalId); // Cleanup interval on component unmount
+  }, [targetDate, calculateTimeLeft]); // Include targetDate and calculateTimeLeft in dependency array
 
   if (Object.keys(timeLeft).length === 0) {
     return <div className="mt-8 text-center">Countdown expired!</div>;
@@ -33,7 +33,7 @@ const CountdownTimer = ({ targetDate }) => {
 
   return (
     <div className="mt-8 text-center">
-      <h2 className="text-2xl font-bold mb-4">Countdown till im with you:</h2>
+      <h2 className="text-2xl font-bold mb-4">Countdown to Our Special Moment:</h2>
       <p className="font-semibold text-lg">
         {Object.entries(timeLeft).map(([unit, value]) => `${value} ${unit}`).join(', ')}
       </p>
