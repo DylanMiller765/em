@@ -8,7 +8,7 @@ function App() {
   const targetDate = '2024-03-01T19:00:00Z'; // The date and time for the countdown
 
   return (
-    <div className="App">
+    <div className="App text-white"> {/* Apply text-white class to the entire App */}
       <Starfield
         starCount={1000}
         starColor={[255, 0, 0]}

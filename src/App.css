@@ -16,6 +16,7 @@
   overflow: hidden; /* Prevent stars from going outside the container */
   position: relative; /* Positioning context for stars */
   background-color: black;
+  color: antiquewhite
 }
 
 .Star {

@@ -1,3 +1,4 @@
+// CountdownTimer.js
 import React, { useState, useEffect, useCallback } from 'react';
 
 const CountdownTimer = ({ targetDate }) => {
@@ -28,12 +29,12 @@ const CountdownTimer = ({ targetDate }) => {
   }, [targetDate, calculateTimeLeft]); // Include targetDate and calculateTimeLeft in dependency array
 
   if (Object.keys(timeLeft).length === 0) {
-    return <div className="mt-8 text-center">Countdown expired!</div>;
+    return <div className="mt-8 text-center text-white">Countdown expired!</div>;
   }
 
   return (
-    <div className="mt-8 text-center">
-      <h2 className="text-2xl font-bold mb-4">Countdown to Our Special Moment:</h2>
+    <div className="mt-8 text-center text-white">
+      <h2 className="text-2xl font-bold mb-4">Countdown till im with you:</h2>
       <p className="font-semibold text-lg">
         {Object.entries(timeLeft).map(([unit, value]) => `${value} ${unit}`).join(', ')}
       </p>
