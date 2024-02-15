@@ -1,22 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import CountdownTimer from './components/CountdownTimer';
+import SpotifyPlayer from './components/SpotifyPlayer';
+import './App.css'; // Assuming you have a separate CSS file for global styles
+import Starfield from './components/StarField'; // Import the Starfield component
 
 function App() {
+  const targetDate = '2024-03-01T19:00:00Z'; // The date and time for the countdown
+
   return (
     <div className="App">
+      <Starfield
+        starCount={1000}
+        starColor={[255, 0, 0]}
+        speedFactor={0.08}
+        backgroundColor="black"
+      />
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1 className="text-4xl font-bold mb-4">See You Soon My Valentine</h1>
+        <p className="mb-8 text-lg">Cant wait to see you! Piggy too! </p>
+        <CountdownTimer targetDate={targetDate} />
+        <SpotifyPlayer />
       </header>
     </div>
   );

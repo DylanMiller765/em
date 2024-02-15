@@ -1,38 +1,45 @@
+/* src/App.css */
+
+/* Import Tailwind's base, components, and utilities styles */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom styles */
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  min-height:  100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-family: 'Courier New', Courier, monospace; /* A classic, readable font */
+  overflow: hidden; /* Prevent stars from going outside the container */
+  position: relative; /* Positioning context for stars */
+  background-color: black;
 }
 
-.App-link {
-  color: #61dafb;
+.Star {
+  @apply absolute w-0 h-0 border-transparent border-solid border-l-[100px] border-r-[100px] border-t-[100px] border-b-[100px] border-current bg-transparent animate-twinkle;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-header {
+  text-align: center;
+  z-index:  1; /* Ensure header appears above stars */
 }
+
+/* Keyframe animation for twinkling stars */
+@keyframes twinkle {
+  0%,   100% {
+   opacity:   1;
+ }
+  50% {
+   opacity:   0.5;
+ }
+}
+
+.animate-twinkle {
+ animation: twinkle  2s linear infinite;
+}
+
+/* ... rest of your styles ... */
